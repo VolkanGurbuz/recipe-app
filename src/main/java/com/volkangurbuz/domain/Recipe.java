@@ -17,10 +17,13 @@ public class Recipe {
   private String source;
   private String url;
   private String directions;
-  // todo add
-  // private Difficulty difficulty;
 
-  // fir a karge ibject storage
+  // position change or not , stroge string value on database with STRING, ordinary is orderly that
+  // you can use the enums
+  @Enumerated(value = EnumType.STRING)
+  private Difficulty difficulty;
+
+  // fOr a large ibject storage
   @Lob private Byte[] image;
   // one to one relationship with note
   @OneToOne(cascade = CascadeType.ALL)
@@ -107,5 +110,13 @@ public class Recipe {
 
   public void setNotes(Note notes) {
     this.notes = notes;
+  }
+
+  public Difficulty getDifficulty() {
+    return difficulty;
+  }
+
+  public void setDifficulty(Difficulty difficulty) {
+    this.difficulty = difficulty;
   }
 }
