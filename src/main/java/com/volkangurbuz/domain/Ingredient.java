@@ -3,7 +3,6 @@ package com.volkangurbuz.domain;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-/** Created by jt on 6/13/17. */
 @Entity
 public class Ingredient {
   @Id
