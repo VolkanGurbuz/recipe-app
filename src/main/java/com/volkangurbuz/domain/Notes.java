@@ -1,10 +1,12 @@
-package com.volkangurbuz.domain;
+package guru.springframework.domain;
 
 import javax.persistence.*;
 
+/**
+ * Created by jt on 6/13/17.
+ */
 @Entity
-public class Note {
-
+public class Notes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
