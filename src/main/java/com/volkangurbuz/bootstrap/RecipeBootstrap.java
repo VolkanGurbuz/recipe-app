@@ -4,15 +4,18 @@ import com.volkangurbuz.domain.*;
 import com.volkangurbuz.repositories.CategoryRepository;
 import com.volkangurbuz.repositories.RecipeRepository;
 import com.volkangurbuz.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
   private final CategoryRepository categoryRepository;
@@ -29,7 +32,11 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
   }
 
   @Override
+  @Transactionals
   public void onApplicationEvent(ContextRefreshedEvent event) {
+    log.debug("loading recipes data");
+    // each time we go in and out of the soring data jap, lazy collection needs to initilaize
+    // trnssactional
     recipeRepository.saveAll(getRecipes());
   }
 
