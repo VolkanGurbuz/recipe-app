@@ -32,7 +32,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
   }
 
   @Override
-  @Transactionals
+  @Transactional
   public void onApplicationEvent(ContextRefreshedEvent event) {
     log.debug("loading recipes data");
     // each time we go in and out of the soring data jap, lazy collection needs to initilaize
