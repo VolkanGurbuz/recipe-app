@@ -139,6 +139,9 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
     guacRecipe.setNotes(guacNotes);
 
+    guacRecipe.setServings(4);
+    guacRecipe.setSource("Simply Source");
+
     // very redundent - could add helper method, and make this simpler
     guacRecipe.addIngredient(new Ingredient("ripe avocados", new BigDecimal(2), eachUom));
     guacRecipe.addIngredient(new Ingredient("Kosher salt", new BigDecimal(".5"), teapoonUom));
@@ -230,7 +233,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
     tacosRecipe.getCategories().add(americanCategory);
     tacosRecipe.getCategories().add(mexicanCategory);
-
+    tacosRecipe.setServings(4);
+    tacosRecipe.setSource("Simply Source");
     recipes.add(tacosRecipe);
     return recipes;
   }
