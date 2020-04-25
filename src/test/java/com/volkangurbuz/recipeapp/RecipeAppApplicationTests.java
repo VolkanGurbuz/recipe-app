@@ -1,8 +1,11 @@
 package com.volkangurbuz.recipeapp;
 
+import com.volkangurbuz.converters.RecipeCommandToRecipe;
+import com.volkangurbuz.converters.RecipeToRecipeCommand;
 import com.volkangurbuz.domain.Recipe;
 import com.volkangurbuz.repositories.RecipeRepository;
 import com.volkangurbuz.services.RecipeServiceImpl;
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -23,12 +26,19 @@ import static org.mockito.Mockito.*;
 class RecipeAppApplicationTests {
 
   RecipeServiceImpl recipeService;
+
   @Mock RecipeRepository recipeRepository;
 
-  @BeforeEach
-  void setUp() {
+  @Mock RecipeToRecipeCommand recipeToRecipeCommand;
+
+  @Mock RecipeCommandToRecipe recipeCommandToRecipe;
+
+  @Before
+  public void setUp() throws Exception {
     MockitoAnnotations.initMocks(this);
-    recipeService = new RecipeServiceImpl(recipeRepository);
+
+    recipeService =
+        new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
   }
 
   @Test
